@@ -3,13 +3,13 @@
 Group Members: Katherine Grimes, Casey Oates, Henry Okyere, Di Ta, Matthew Young
 
 
-#Campus Eats Model
+##Campus Eats Model
 
-#Descreption
+##Descreption
 
-#Business Rules
+##Business Rules
 
-#Enhanced Entity Relationship Diagram
+##Enhanced Entity Relationship Diagram
 
-#Data Dictionary
+##Data Dictionary
 
