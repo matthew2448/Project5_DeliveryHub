@@ -33,7 +33,14 @@ This project will take an existing database prototype provided by the “Maveric
 &nbsp;&nbsp;&nbsp;&nbsp;o	Restaurants can have many ratings.<br>
 □	The ratings must indicate the restaurant, person, driver id, review number, review description and number of stars - based on a 5-star rating system.<br>
 
+## Case Diagram
+
+![The Case Diagram](https://drive.google.com/file/d/15_4twzvth8SV6lZOd4ZZ-J-zXTttOrFY/view?usp=sharing)
+
+
 ## Enhanced Entity Relationship Diagram
+
+![The EERD](https://drive.google.com/file/d/1Uw_WLsaSawocqxxRrokR0m71waWS1eS5/view?usp=sharing)
 
 ## Data Dictionary
 
