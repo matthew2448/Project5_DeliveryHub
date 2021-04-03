@@ -35,12 +35,12 @@ This project will take an existing database prototype provided by the “Maveric
 
 ## Case Diagram
 
-![The Case Diagram](https://drive.google.com/file/d/15_4twzvth8SV6lZOd4ZZ-J-zXTttOrFY/view?usp=sharing)
+![The Case Diagram](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/CaseDiagram.png)
 
 
 ## Enhanced Entity Relationship Diagram
 
-![The EERD](https://drive.google.com/file/d/1Uw_WLsaSawocqxxRrokR0m71waWS1eS5/view?usp=sharing)
+![The EERD](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/Team5_EERD.png)
 
 ## Data Dictionary
 
