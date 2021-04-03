@@ -44,18 +44,17 @@ This project will take an existing database prototype provided by the “Maveric
 
 ## Data Dictionary
 
-| Table: delivery |           |          |     |     |         |
-| --------------- | --------- | -------- | --- | --- | ------- |
-| Table Comments  |           |          |     |     |         |
-| Columns         |           |          |     |     |         |  |
-| Name            | Data Type | Nullable | PK  | FK  | Default | Comment |
-| delivery\_id    | INT       | Yes      | Yes | No  |         |  |
-| driver\_id      | INT       | Yes      | No  | Yes |         |  |
-| vehicle\_id     | INT       | Yes      | No  | Yes |         |  |
-| delivery\_time  | DATETIME  | No       | No  | No  | NULL    |  |
-
-| Table: driver     |              |          |     |     |         |
+| Table: delivery   |              |          |     |     |         |
 | ----------------- | ------------ | -------- | --- | --- | ------- |
+| Table Comments    |              |          |     |     |         |
+| Columns           |              |          |     |     |         |  |
+| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| delivery\_id      | INT          | Yes      | Yes | No  |         |  |
+| driver\_id        | INT          | Yes      | No  | Yes |         |  |
+| vehicle\_id       | INT          | Yes      | No  | Yes |         |  |
+| delivery\_time    | DATETIME     | No       | No  | No  | NULL    |  |
+|                   |              |          |     |     |         |  |
+| Table: driver     |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
 | Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
@@ -65,7 +64,6 @@ This project will take an existing database prototype provided by the “Maveric
 | date\_hired       | DATE         | No       | No  | No  | NULL    |  |
 | rating            | FLOAT        | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-
 | Table: faculty    |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -76,7 +74,6 @@ This project will take an existing database prototype provided by the “Maveric
 | degree\_college   | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | highest\_degree   | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-
 | Table: location   |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -88,7 +85,6 @@ This project will take an existing database prototype provided by the “Maveric
 | longitude         | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | drop\_off\_point  | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-
 | Table: order      |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -102,7 +98,6 @@ This project will take an existing database prototype provided by the “Maveric
 | total\_price      | FLOAT        | Yes      | No  | No  |         |  |
 | delivery\_charge  | FLOAT        | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-
 | Table: person     |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -112,7 +107,6 @@ This project will take an existing database prototype provided by the “Maveric
 | person\_email     | VARCHAR(150) | No       | No  | No  | NULL    |  |
 | cell              | BIGINT       | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-
 | Table: restaurant |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -123,7 +117,6 @@ This project will take an existing database prototype provided by the “Maveric
 | schedule          | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | website           | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-
 | Table: staff      |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -133,7 +126,10 @@ This project will take an existing database prototype provided by the “Maveric
 | position          | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | is\_admin         | VARCHAR(1)   | No       | No  | No  | 'N'     |  |
 | Table List        |              |          |     |     |         |
-
+|                   |              |          |     |     |         |  |
+|                   |              |          |     |     |         |  |
+|                   |              |          |     |     |         |  |
+|                   |              |          |     |     |         |  |
 | Table: student    |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -144,7 +140,6 @@ This project will take an existing database prototype provided by the “Maveric
 | major             | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | type              | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-
 | Table: vehicle    |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -154,7 +149,6 @@ This project will take an existing database prototype provided by the “Maveric
 | model             | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | make              | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-
 | Table: Ratings    |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
