@@ -451,3 +451,33 @@ DELIMITER ;
 -- /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 -- /*This is a test */ ;
+
+-- /*Create Rating Tables*/ ;
+
+DROP TABLE IF EXISTS ratings;
+CREATE TABLE `ratings` (
+	`rating_id` INT(11) NOT NULL AUTO_INCREMENT,
+	`overall_rating` INT(1) NOT NULL,
+	`order_id` INT(11) NOT NULL,
+    PRIMARY KEY (`rating_id`),
+    KEY `fk_O_order_id` (`order_id`),
+    CONSTRAINT `fk_O_order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
+);
+DROP TABLE IF EXISTS restrauntratings;
+CREATE TABLE `restrauntratings` (
+	`rating_id` INT(11) NOT NULL,
+	`food_rating` INT(1) NOT NULL,
+	`price_rating` INT(1) NOT NULL,
+    PRIMARY KEY (`rating_id`),
+    KEY `fk_r_rating_id` (`rating_id`),
+    CONSTRAINT `fk_r_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `ratings` (`rating_id`)
+);
+DROP TABLE IF EXISTS deliveryratings;
+CREATE TABLE `deliveryratings` (
+	`rating_id` INT(11) NOT NULL,
+	`ontime` INT(1) NOT NULL,
+	`courteous` INT(1) NOT NULL,
+    -- PRIMARY KEY (`rating_id`), --
+    KEY `fk_O_rating_id` (`rating_id`),
+    CONSTRAINT `fk_O_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `ratings` (`rating_id`)
+);
