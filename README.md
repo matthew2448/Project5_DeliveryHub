@@ -40,7 +40,7 @@ This project will take an existing database prototype provided by the “Maveric
 
 ## Enhanced Entity Relationship Diagram
 
-![The EERD](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/Team5_EERD.png)
+![The EERD](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/UpdatedEERD5.png)
 
 ## Data Dictionary
 
