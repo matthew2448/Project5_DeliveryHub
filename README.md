@@ -44,131 +44,135 @@ This project will take an existing database prototype provided by the “Maveric
 
 ## Data Dictionary
 
-| Table: delivery   |              |          |     |     |         |
-| ----------------- | ------------ | -------- | --- | --- | ------- |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| delivery\_id      | INT          | Yes      | Yes | No  |         |  |
-| driver\_id        | INT          | Yes      | No  | Yes |         |  |
-| vehicle\_id       | INT          | Yes      | No  | Yes |         |  |
-| delivery\_time    | DATETIME     | No       | No  | No  | NULL    |  |
-|                   |              |          |     |     |         |  |
-| Table: driver     |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| driver\_id        | INT          | Yes      | Yes | No  |         |  |
-| student\_id       | INT          | Yes      | No  | Yes |         |  |
-| license\_number   | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| date\_hired       | DATE         | No       | No  | No  | NULL    |  |
-| rating            | FLOAT        | No       | No  | No  | NULL    |  |
-| Table List        |              |          |     |     |         |
-| Table: faculty    |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| faculty\_id       | INT          | Yes      | Yes | No  |         |  |
-| person\_id        | INT          | Yes      | No  | Yes |         |  |
-| title             | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| degree\_college   | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| highest\_degree   | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| Table List        |              |          |     |     |         |
-| Table: location   |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| location\_id      | INT          | Yes      | Yes | No  |         |  |
-| location\_name    | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| location\_address | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| latitude          | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| longitude         | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| drop\_off\_point  | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| Table List        |              |          |     |     |         |
-| Table: order      |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| order\_id         | INT          | Yes      | Yes | No  |         |  |
-| person\_id        | INT          | Yes      | No  | Yes |         |  |
-| delivery\_id      | INT          | Yes      | No  | Yes |         |  |
-| location\_id      | INT          | Yes      | No  | Yes |         |  |
-| driver\_id        | INT          | Yes      | No  | Yes |         |  |
-| restaurant\_id    | INT          | Yes      | No  | Yes |         |  |
-| total\_price      | FLOAT        | Yes      | No  | No  |         |  |
-| delivery\_charge  | FLOAT        | No       | No  | No  | NULL    |  |
-| Table List        |              |          |     |     |         |
-| Table: person     |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| person\_id        | INT          | Yes      | Yes | No  |         |  |
-| person\_name      | VARCHAR(300) | No       | No  | No  | NULL    |  |
-| person\_email     | VARCHAR(150) | No       | No  | No  | NULL    |  |
-| cell              | BIGINT       | No       | No  | No  | NULL    |  |
-| Table List        |              |          |     |     |         |
-| Table: restaurant |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| restaurant\_id    | INT          | Yes      | Yes | No  |         |  |
-| location          | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| restaurant\_name  | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| schedule          | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| website           | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| Table List        |              |          |     |     |         |
-| Table: staff      |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| staff\_id         | INT          | Yes      | Yes | No  |         |  |
-| person\_id        | INT          | No       | No  | Yes | NULL    |  |
-| position          | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| is\_admin         | VARCHAR(1)   | No       | No  | No  | 'N'     |  |
-| Table List        |              |          |     |     |         |
-| Table: student    |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| student\_id       | INT          | Yes      | Yes | No  |         |  |
-| person\_id        | INT          | Yes      | No  | Yes |         |  |
-| graduation\_year  | INT          | No       | No  | No  | NULL    |  |
-| major             | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| type              | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| Table List        |              |          |     |     |         |
-| Table: vehicle    |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| vehicle\_id       | INT          | Yes      | Yes | No  |         |  |
-| vehicle\_plate    | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| model             | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| make              | VARCHAR(75)  | No       | No  | No  | NULL    |  |
-| Table List        |              |          |     |     |         |
-| Table: ratings            |             |          |     |     |         |         |
-|---------------------------|-------------|----------|-----|-----|---------|---------|
-| Table Comments            |             |          |     |     |         |         |
-| Columns                   |             |          |     |     |         |         |
-| Name                      | Data Type   | Nullable | PK  | FK  | Default | Comment |
-| rating_id                 | INT         | Yes      | Yes | No  |         |         |
-| overall_rating            | INT         | Yes      | No  | No  |         |         |
-| order_id                  | INT         | Yes      | No  | Yes |         |         |
-| Table List                |             |          |     |     |         |         |
-| Table: restaurant         |             |          |     |     |         |         |
-| Table Comments            |             |          |     |     |         |         |
-| Columns                   |             |          |     |     |         |         |
-| Name                      | Data Type   | Nullable | PK  | FK  | Default | Comment |
-| restaurant_id             | INT         | Yes      | Yes | No  |         |         |
-| location                  | VARCHAR(75) | No       | No  | No  | NULL    |         |
-| restaurant_name           | VARCHAR(75) | No       | No  | No  | NULL    |         |
-| schedule                  | VARCHAR(75) | No       | No  | No  | NULL    |         |
-| website                   | VARCHAR(75) | No       | No  | No  | NULL    |         |
-| Table List                |             |          |     |     |         |         |
-| Table: restaurantratings  |             |          |     |     |         |         |
-| Table Comments            |             |          |     |     |         |         |
-| Columns                   |             |          |     |     |         |         |
-| Name                      | Data Type   | Nullable | PK  | FK  | Default | Comment |
-| rating_id                 | INT         | Yes      | Yes | Yes |         |         |
-| food_rating               | INT         | Yes      | No  | No  |         |         |
-| price_rating              | INT         | Yes      | No  | No  |         |         |
-| Table List                |             |          |     |     |         |         |
+| Table: delivery           |              |          |     |     |         |         |
+|---------------------------|--------------|----------|-----|-----|---------|---------|
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| delivery_id               | INT          | Yes      | Yes | No  |         |         |
+| driver_id                 | INT          | Yes      | No  | Yes |         |         |
+| vehicle_id                | INT          | Yes      | No  | Yes |         |         |
+| delivery_time             | DATETIME     | No       | No  | No  | NULL    |         |
+| Table List                |              |          |     |     |         |         |
+| Table: deliveryratings    |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| rating_id                 | INT          | Yes      | Yes | Yes |         |         |
+| ontime                    | INT          | Yes      | No  | No  |         |         |
+| courteous                 | INT          | Yes      | No  | No  |         |         |
+|                           |              |          |     |     |         |         |
+|                           |              |          |     |     |         |         |
+| Table List                |              |          |     |     |         |         |
+| Table: driver             |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| driver_id                 | INT          | Yes      | Yes | No  |         |         |
+| student_id                | INT          | Yes      | No  | Yes |         |         |
+| license_number            | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| date_hired                | DATE         | No       | No  | No  | NULL    |         |
+| rating                    | FLOAT        | No       | No  | No  | NULL    |         |
+| Table List                |              |          |     |     |         |         |
+| Table: faculty            |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| faculty_id                | INT          | Yes      | Yes | No  |         |         |
+| person_id                 | INT          | Yes      | No  | Yes |         |         |
+| title                     | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| degree_college            | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| highest_degree            | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| Table List                |              |          |     |     |         |         |
+| Table: location           |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| location_id               | INT          | Yes      | Yes | No  |         |         |
+| location_name             | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| location_address          | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| latitude                  | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| longitude                 | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| drop_off_point            | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+|                           |              |          |     |     |         |         |
+|                           |              |          |     |     |         |         |
+|                           |              |          |     |     |         |         |
+| Table List                |              |          |     |     |         |         |
+| Table: order              |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| order_id                  | INT          | Yes      | Yes | No  |         |         |
+| person_id                 | INT          | Yes      | No  | Yes |         |         |
+| delivery_id               | INT          | Yes      | No  | Yes |         |         |
+| location_id               | INT          | Yes      | No  | Yes |         |         |
+| driver_id                 | INT          | Yes      | No  | Yes |         |         |
+| restaurant_id             | INT          | Yes      | No  | Yes |         |         |
+| total_price               | FLOAT        | Yes      | No  | No  |         |         |
+| delivery_charge           | FLOAT        | No       | No  | No  | NULL    |         |
+| Table List                |              |          |     |     |         |         |
+| Table: person             |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| person_id                 | INT          | Yes      | Yes | No  |         |         |
+| person_name               | VARCHAR(300) | No       | No  | No  | NULL    |         |
+| person_email              | VARCHAR(150) | No       | No  | No  | NULL    |         |
+| cell                      | BIGINT       | No       | No  | No  | NULL    |         |
+| Table List                |              |          |     |     |         |         |
+| Table: ratings            |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| rating_id                 | INT          | Yes      | Yes | No  |         |         |
+| overall_rating            | INT          | Yes      | No  | No  |         |         |
+| order_id                  | INT          | Yes      | No  | Yes |         |         |
+|                           |              |          |     |     |         |         |
+|                           |              |          |     |     |         |         |
+|                           |              |          |     |     |         |         |
+|                           |              |          |     |     |         |         |
+| Table List                |              |          |     |     |         |         |
+| Table: restaurant         |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| restaurant_id             | INT          | Yes      | Yes | No  |         |         |
+| location                  | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| restaurant_name           | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| schedule                  | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| website                   | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| Table List                |              |          |     |     |         |         |
+| Table: restaurantratings  |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| rating_id                 | INT          | Yes      | Yes | Yes |         |         |
+| food_rating               | INT          | Yes      | No  | No  |         |         |
+| price_rating              | INT          | Yes      | No  | No  |         |         |
+| Table List                |              |          |     |     |         |         |
+| Table: staff              |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| staff_id                  | INT          | Yes      | Yes | No  |         |         |
+| person_id                 | INT          | No       | No  | Yes | NULL    |         |
+| position                  | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| is_admin                  | VARCHAR(1)   | No       | No  | No  | 'N'     |         |
+| Table List                |              |          |     |     |         |         |
+| Table: student            |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| student_id                | INT          | Yes      | Yes | No  |         |         |
+| person_id                 | INT          | Yes      | No  | Yes |         |         |
+| graduation_year           | INT          | No       | No  | No  | NULL    |         |
+| major                     | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| type                      | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| Table List                |              |          |     |     |         |         |
+| Table: vehicle            |              |          |     |     |         |         |
+| Table Comments            |              |          |     |     |         |         |
+| Columns                   |              |          |     |     |         |         |
+| Name                      | Data Type    | Nullable | PK  | FK  | Default | Comment |
+| vehicle_id                | INT          | Yes      | Yes | No  |         |         |
+| vehicle_plate             | VARCHAR(75)  | No       | No  | No  | NULL    |         |
+| model                     | VARCHAR(75)  | No       | N   |     |         |         |
