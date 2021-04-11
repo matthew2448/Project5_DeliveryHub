@@ -126,10 +126,6 @@ This project will take an existing database prototype provided by the “Maveric
 | position          | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | is\_admin         | VARCHAR(1)   | No       | No  | No  | 'N'     |  |
 | Table List        |              |          |     |     |         |
-|                   |              |          |     |     |         |  |
-|                   |              |          |     |     |         |  |
-|                   |              |          |     |     |         |  |
-|                   |              |          |     |     |         |  |
 | Table: student    |              |          |     |     |         |
 | Table Comments    |              |          |     |     |         |
 | Columns           |              |          |     |     |         |  |
@@ -149,14 +145,30 @@ This project will take an existing database prototype provided by the “Maveric
 | model             | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | make              | VARCHAR(75)  | No       | No  | No  | NULL    |  |
 | Table List        |              |          |     |     |         |
-| Table: Ratings    |              |          |     |     |         |
-| Table Comments    |              |          |     |     |         |
-| Columns           |              |          |     |     |         |  |
-| Name              | Data Type    | Nullable | PK  | FK  | Default | Comment |
-| driver\_id        | INT          | Yes      | No  | No  | NULL    |  |
-| person\_id        | INT          | Yes      | No  | Yes | NULL    |  |
-| review\_id        | INT          | Yes      | Yes | No  |         |  |
-| descriptionid     | VARCHAR(255) | No       | No  | No  | NULL    |  |
-| rating\_number    | INT          | Yes      | No  | No  | NULL    |  |
-| restaurant\_id    | INT          | Yes      | No  | Yes | NULL    |  |
-| Table List        |              |          |     |     |         |
+| Table: ratings            |             |          |     |     |         |         |
+|---------------------------|-------------|----------|-----|-----|---------|---------|
+| Table Comments            |             |          |     |     |         |         |
+| Columns                   |             |          |     |     |         |         |
+| Name                      | Data Type   | Nullable | PK  | FK  | Default | Comment |
+| rating_id                 | INT         | Yes      | Yes | No  |         |         |
+| overall_rating            | INT         | Yes      | No  | No  |         |         |
+| order_id                  | INT         | Yes      | No  | Yes |         |         |
+| Table List                |             |          |     |     |         |         |
+| Table: restaurant         |             |          |     |     |         |         |
+| Table Comments            |             |          |     |     |         |         |
+| Columns                   |             |          |     |     |         |         |
+| Name                      | Data Type   | Nullable | PK  | FK  | Default | Comment |
+| restaurant_id             | INT         | Yes      | Yes | No  |         |         |
+| location                  | VARCHAR(75) | No       | No  | No  | NULL    |         |
+| restaurant_name           | VARCHAR(75) | No       | No  | No  | NULL    |         |
+| schedule                  | VARCHAR(75) | No       | No  | No  | NULL    |         |
+| website                   | VARCHAR(75) | No       | No  | No  | NULL    |         |
+| Table List                |             |          |     |     |         |         |
+| Table: restaurantratings  |             |          |     |     |         |         |
+| Table Comments            |             |          |     |     |         |         |
+| Columns                   |             |          |     |     |         |         |
+| Name                      | Data Type   | Nullable | PK  | FK  | Default | Comment |
+| rating_id                 | INT         | Yes      | Yes | Yes |         |         |
+| food_rating               | INT         | Yes      | No  | No  |         |         |
+| price_rating              | INT         | Yes      | No  | No  |         |         |
+| Table List                |             |          |     |     |         |         |
