@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `deliveryratings`
+-- Table structure for table `restrauntratings`
 --
 
-DROP TABLE IF EXISTS `deliveryratings`;
+DROP TABLE IF EXISTS `restrauntratings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `deliveryratings` (
+CREATE TABLE `restrauntratings` (
   `rating_id` int NOT NULL,
-  `ontime` int NOT NULL,
-  `courteous` int NOT NULL,
+  `food_rating` int NOT NULL,
+  `price_rating` int NOT NULL,
   PRIMARY KEY (`rating_id`),
-  KEY `fk_O_rating_id` (`rating_id`),
-  CONSTRAINT `fk_O_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `ratings` (`rating_id`)
+  KEY `fk_r_rating_id` (`rating_id`),
+  CONSTRAINT `fk_r_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `ratings` (`rating_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `deliveryratings`
+-- Dumping data for table `restrauntratings`
 --
 
-LOCK TABLES `deliveryratings` WRITE;
-/*!40000 ALTER TABLE `deliveryratings` DISABLE KEYS */;
-INSERT INTO `deliveryratings` VALUES (1,3,2),(2,6,4),(3,10,9),(4,1,10),(5,4,2),(6,5,10),(7,8,1),(8,10,3),(9,6,9),(10,9,5),(11,1,1),(12,5,4),(13,1,2),(14,6,2),(15,7,7),(16,9,10),(17,1,2),(18,3,5),(19,10,1),(20,9,2),(21,8,1),(22,10,1),(23,9,6),(24,9,10),(25,8,3),(26,1,1),(27,10,9),(28,10,5),(29,2,9),(30,5,10),(31,2,9),(32,4,4),(33,7,2),(34,3,2),(35,6,2),(36,3,7),(37,4,8),(38,1,7),(39,10,8),(40,8,5),(41,5,8),(42,8,1),(43,1,7),(44,8,2),(45,6,3),(46,5,4),(47,7,3),(48,2,8),(49,5,9),(50,9,3),(51,2,2),(52,4,10),(53,5,9),(54,1,8),(55,8,2),(56,9,2),(57,8,8),(58,4,9),(59,3,10),(60,9,10),(61,8,7),(62,3,2),(63,7,1),(64,5,2),(65,3,4),(66,4,7),(67,9,10),(68,8,3),(69,9,6),(70,2,8),(71,6,8),(72,10,4),(73,4,3),(74,6,7),(75,4,4),(76,6,1),(77,9,1),(78,1,8),(79,7,4),(80,9,1),(81,10,9),(82,5,10),(83,7,9),(84,7,9),(85,8,9),(86,5,4),(87,3,7),(88,2,2),(89,5,5),(90,10,5),(91,7,2),(92,10,5),(93,10,2),(94,10,7),(95,10,9),(96,8,10),(97,6,9),(98,5,7),(99,4,9),(100,2,5);
-/*!40000 ALTER TABLE `deliveryratings` ENABLE KEYS */;
+LOCK TABLES `restrauntratings` WRITE;
+/*!40000 ALTER TABLE `restrauntratings` DISABLE KEYS */;
+INSERT INTO `restrauntratings` VALUES (1,4,2),(2,6,2),(3,8,7),(4,7,4),(5,8,7),(6,7,6),(7,9,4),(8,10,5),(9,9,7),(10,1,1),(11,9,7),(12,10,5),(13,5,6),(14,4,3),(15,7,10),(16,5,10),(17,10,4),(18,9,9),(19,7,2),(20,3,10),(21,7,7),(22,1,8),(23,9,6),(24,8,9),(25,4,1),(26,7,5),(27,3,1),(28,3,3),(29,6,8),(30,5,6),(31,8,5),(32,9,2),(33,6,6),(34,9,2),(35,7,9),(36,6,10),(37,6,2),(38,7,8),(39,6,10),(40,6,10),(41,5,8),(42,5,1),(43,6,10),(44,8,4),(45,7,10),(46,10,1),(47,1,5),(48,5,3),(49,3,10),(50,2,5),(51,6,3),(52,8,5),(53,9,3),(54,8,5),(55,2,10),(56,2,5),(57,6,6),(58,5,7),(59,1,8),(60,10,7),(61,7,10),(62,9,6),(63,6,6),(64,1,10),(65,5,6),(66,6,7),(67,8,3),(68,5,1),(69,8,2),(70,3,10),(71,10,6),(72,4,10),(73,4,5),(74,2,2),(75,7,2),(76,8,3),(77,4,2),(78,5,8),(79,2,5),(80,1,7),(81,10,2),(82,5,9),(83,4,3),(84,2,3),(85,9,7),(86,5,5),(87,8,10),(88,9,4),(89,2,1),(90,9,5),(91,5,4),(92,8,6),(93,7,10),(94,6,4),(95,2,3),(96,7,7),(97,3,5),(98,8,5),(99,1,10),(100,2,5);
+/*!40000 ALTER TABLE `restrauntratings` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-11 22:43:48
+-- Dump completed on 2021-04-11 22:43:49

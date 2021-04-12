@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.22, for macos10.15 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
 --
--- Host: localhost    Database: Campus_Eats_Fall2020
+-- Host: 127.0.0.1    Database: campus_eats_fall2020
 -- ------------------------------------------------------
 -- Server version	8.0.23
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-07 19:49:44
+-- Dump completed on 2021-04-11 22:43:50
