@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-Campus Eats Script",
+      "appliesTo": "Campus Eats Script.sql",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-Campus Eats Model",
+      "appliesTo": "Campus Eats Model.mwb",
+      "type": "launch"
+    }
+  ]
+}
