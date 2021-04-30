@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.22, for macos10.15 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
 --
--- Host: localhost    Database: Campus_Eats_Fall2020
+-- Host: localhost    Database: campus_eats_fall2020
 -- ------------------------------------------------------
 -- Server version	8.0.23
 
@@ -83,11 +83,11 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Dumping events for database 'Campus_Eats_Fall2020'
+-- Dumping events for database 'campus_eats_fall2020'
 --
 
 --
--- Dumping routines for database 'Campus_Eats_Fall2020'
+-- Dumping routines for database 'campus_eats_fall2020'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `add_person` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -126,16 +126,32 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Max_Rating_For_Driver`(in id_of_driver int)
-BEGIN
-	SELECT
-    driver_id, MAX(ontime)
-FROM
-    `order`,
-    deliveryratings
-WHERE driver_id = id_of_driver;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Max_Rating_For_Driver`(
+in id_of_driver int,
+out max_ontime decimal(2,1),
+out max_cour decimal(2,1))
+BEGIN 
+declare theavgontime decimal (2,1);
+declare theavgcour decimal (2,1);
+SET theavgontime = (
+	SELECT MAX(deliveryratings.ontime)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN deliveryratings on ratings.rating_id = deliveryratings.rating_id
+WHERE orders.driver_id_id = id_of_driver);
+
+SET theavgcour = (
+	SELECT MAX(deliveryratings.cour)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN restrauntratings on ratings.rating_id = deliveryratings.rating_id
+WHERE orders.driver_id = id_of_driver);
+
+
+SET max_ontime = theavgtime;
+SET max_cour = theavgcour;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -150,16 +166,32 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Max_Rating_For_restaurant`(in id_of_restaurant int)
-BEGIN
-	SELECT
-    restaurant_id, MAX(price_rating), MIN(food_rating)
-FROM
-    `order`,
-    restrauntratings
-WHERE restaurant_id = id_of_restaurant;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Max_Rating_For_restaurant`(
+in id_of_restaurant int,
+out max_price decimal(2,1),
+out max_food decimal(2,1))
+BEGIN 
+declare theavgprice decimal (2,1);
+declare theavgfood decimal (2,1);
+SET theavgprice = (
+	SELECT MAX(restrauntratings.price_rating)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN restrauntratings on ratings.rating_id = restrauntratings.rating_id
+WHERE orders.restaurant_id = id_of_restaurant);
+
+SET theavgfood = (
+	SELECT MAX(restrauntratings.food_rating)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN restrauntratings on ratings.rating_id = restrauntratings.rating_id
+WHERE orders.restaurant_id = id_of_restaurant);
+
+
+SET max_price = theavgprice;
+SET max_food = theavgfood;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -174,16 +206,32 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Min_Rating_For_Driver`(in id_of_driver int)
-BEGIN
-	SELECT
-    driver_id, MIN(ontime)
-FROM
-    `order`,
-    deliveryratings
-WHERE driver_id = id_of_driver;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Min_Rating_For_Driver`(
+in id_of_driver int,
+out min_ontime decimal(2,1),
+out min_cour decimal(2,1))
+BEGIN 
+declare theavgontime decimal (2,1);
+declare theavgcour decimal (2,1);
+SET theavgontime = (
+	SELECT MIN(deliveryratings.ontime)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN deliveryratings on ratings.rating_id = deliveryratings.rating_id
+WHERE orders.driver_id_id = id_of_driver);
+
+SET theavgcour = (
+	SELECT MIN(deliveryratings.cour)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN restrauntratings on ratings.rating_id = deliveryratings.rating_id
+WHERE orders.driver_id = id_of_driver);
+
+
+SET min_ontime = theavgtime;
+SET min_cour = theavgcour;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -198,16 +246,32 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Min_Rating_For_restaurant`(in id_of_restaurant int)
-BEGIN
-	SELECT
-    restaurant_id, MIN(price_rating), MIN(food_rating)
-FROM
-    `order`,
-    restrauntratings
-WHERE restaurant_id = id_of_restaurant;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Min_Rating_For_restaurant`(
+in id_of_restaurant int,
+out min_price decimal(2,1),
+out min_food decimal(2,1))
+BEGIN 
+declare theavgprice decimal (2,1);
+declare theavgfood decimal (2,1);
+SET theavgprice = (
+	SELECT MIN(restrauntratings.price_rating)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN restrauntratings on ratings.rating_id = restrauntratings.rating_id
+WHERE orders.restaurant_id = id_of_restaurant);
+
+SET theavgfood = (
+	SELECT MIN(restrauntratings.food_rating)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN restrauntratings on ratings.rating_id = restrauntratings.rating_id
+WHERE orders.restaurant_id = id_of_restaurant);
+
+
+SET min_price = theavgprice;
+SET min_food = theavgfood;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -222,16 +286,30 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Overall_Rating_For_Driver`(in id_of_driver int)
-BEGIN
-	SELECT
-    driver_id, AVG(ontime)
-FROM
-    `order`,
-    deliveryratings
-WHERE driver_id = id_of_driver;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Overall_Rating_For_Driver`(
+in id_of_driver int,
+out out_avg decimal(2,1))
+BEGIN 
+declare theavgcourteous decimal (2,1);
+declare theavgontime decimal (2,1);
+SET theavgcourteous = (
+	SELECT AVG(deliveryratings.courteous)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN deliveryratings on ratings.rating_id = deliveryratings.rating_id
+WHERE orders.driver_id = id_of_driver);
+
+SET theavgontime = (
+	SELECT AVG(deliveryratings.ontime)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN deliveryratings on ratings.rating_id = deliveryratings.rating_id
+WHERE orders.driver_id = id_of_driver);
+
+
+SET out_avg = (theavgcourteous + theavgontime) / 2;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -246,16 +324,30 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Overall_Rating_For_restaurant`(in id_of_restaurant int)
-BEGIN
-	SELECT
-    restaurant_id, AVG(price_rating), AVG(food_rating)
-FROM
-    `order`,
-    restrauntratings
-WHERE restaurant_id = id_of_restaurant;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Overall_Rating_For_restaurant`(
+in id_of_restaurant int,
+out out_avg decimal(2,1))
+BEGIN 
+declare theavgprice decimal (2,1);
+declare theavgfood decimal (2,1);
+SET theavgprice = (
+	SELECT AVG(restrauntratings.price_rating)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN restrauntratings on ratings.rating_id = restrauntratings.rating_id
+WHERE orders.restaurant_id = id_of_restaurant);
+
+SET theavgfood = (
+	SELECT AVG(restrauntratings.food_rating)
+FROM `orders`
+INNER JOIN ratings ON orders.orders_id = ratings.orders_id
+INNER JOIN restrauntratings on ratings.rating_id = restrauntratings.rating_id
+WHERE orders.restaurant_id = id_of_restaurant);
+
+
+SET out_avg = (theavgprice + theavgfood) / 2;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -272,4 +364,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-11 22:54:21
+-- Dump completed on 2021-04-30 14:07:17

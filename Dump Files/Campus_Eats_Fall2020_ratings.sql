@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.22, for macos10.15 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.24, for Win64 (x86_64)
 --
--- Host: localhost    Database: Campus_Eats_Fall2020
+-- Host: localhost    Database: campus_eats_fall2020
 -- ------------------------------------------------------
 -- Server version	8.0.23
 
@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `ratings`;
 CREATE TABLE `ratings` (
   `rating_id` int NOT NULL AUTO_INCREMENT,
   `overall_rating` int NOT NULL,
-  `order_id` int NOT NULL,
+  `orders_id` int NOT NULL,
   PRIMARY KEY (`rating_id`),
-  KEY `fk_O_order_id` (`order_id`),
-  CONSTRAINT `fk_O_order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`)
+  KEY `fk_O_orders_id` (`orders_id`),
+  CONSTRAINT `fk_O_orders_id` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`orders_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-11 22:54:13
+-- Dump completed on 2021-04-30 14:07:17
