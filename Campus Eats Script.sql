@@ -451,7 +451,9 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 
-
+--
+-- Create 'ratings' table
+--
 
 DROP TABLE IF EXISTS ratings;
 CREATE TABLE `ratings` (
@@ -462,6 +464,11 @@ CREATE TABLE `ratings` (
     KEY `fk_O_orders_id` (`orders_id`),
     CONSTRAINT `fk_O_orders_id` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`orders_id`)
 );
+
+--
+-- Create 'restrauntratings' table
+--
+
 DROP TABLE IF EXISTS restrauntratings;
 CREATE TABLE `restrauntratings` (
 	`rating_id` INT(11) NOT NULL,
@@ -471,6 +478,11 @@ CREATE TABLE `restrauntratings` (
     KEY `fk_r_rating_id` (`rating_id`),
     CONSTRAINT `fk_r_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `ratings` (`rating_id`)
 );
+
+--
+-- Create 'deliveryratings' table
+--
+
 DROP TABLE IF EXISTS deliveryratings;
 CREATE TABLE `deliveryratings` (
 	`rating_id` INT(11) NOT NULL,
@@ -481,12 +493,28 @@ CREATE TABLE `deliveryratings` (
     CONSTRAINT `fk_O_rating_id` FOREIGN KEY (`rating_id`) REFERENCES `ratings` (`rating_id`)
 );
 
+--
+-- Insert Values into `ratings` table
+--
 INSERT INTO `ratings` (`rating_id`,`overall_rating`,`orders_id`) VALUES 
 (1,5,1),(2,3,2),(3,4,3),(4,7,4),(5,2,5),(6,1,6),(7,3,7),(8,5,8),(9,5,9),(10,5,10),
 (11,3,11),(12,5,12),(13,7,13),(14,4,14),(15,9,15),(16,2,16),(17,2,17),(18,3,18),(19,1,19),(20,10,20),(21,9,21),(22,8,22),(23,8,23),(24,2,24),(25,5,25),(26,1,26),(27,1,27),(28,5,28),(29,1,29),(30,7,30),(31,6,31),(32,8,32),(33,9,33),(34,9,34),(35,3,35),(36,7,36),(37,10,37),(38,3,38),(39,10,39),(40,8,40),(41,4,41),(42,4,42),(43,6,43),(44,6,44),(45,9,45),(46,3,46),(47,3,47),(48,9,48),(49,2,49),(50,2,50),(51,4,51),(52,6,52),(53,8,53),(54,10,54),(55,3,55),(56,1,56),(57,8,57),(58,10,58),(59,3,59),(60,10,60),(61,10,61),(62,4,62),(63,4,63),(64,9,64),(65,4,65),(66,3,66),(67,6,67),(68,7,68),(69,2,69),(70,2,70),(71,3,71),(72,1,72),(73,10,73),(74,9,74),(75,8,75),(76,9,76),(77,6,77),(78,9,78),(79,5,79),(80,3,80),(81,7,81),(82,7,82),(83,8,83),(84,5,84),(85,1,85),(86,7,86),(87,6,87),(88,3,88),(89,9,89),(90,2,90),(91,3,91),(92,10,92),(93,5,93),(94,2,94),(95,4,95),(96,2,96),(97,8,97),(98,4,98),(99,1,99),(100,1,100);
+
+--
+-- Insert Values into `restrauntratings` table
+--
+
 INSERT INTO `restrauntratings` (`rating_id`,`food_rating`,`price_rating`) VALUES (1,4,2),(2,6,2),(3,8,7),(4,7,4),(5,8,7),(6,7,6),(7,9,4),(8,10,5),(9,9,7),(10,1,1),(11,9,7),(12,10,5),(13,5,6),(14,4,3),(15,7,10),(16,5,10),(17,10,4),(18,9,9),(19,7,2),(20,3,10),(21,7,7),(22,1,8),(23,9,6),(24,8,9),(25,4,1),(26,7,5),(27,3,1),(28,3,3),(29,6,8),(30,5,6),(31,8,5),(32,9,2),(33,6,6),(34,9,2),(35,7,9),(36,6,10),(37,6,2),(38,7,8),(39,6,10),(40,6,10),(41,5,8),(42,5,1),(43,6,10),(44,8,4),(45,7,10),(46,10,1),(47,1,5),(48,5,3),(49,3,10),(50,2,5),(51,6,3),(52,8,5),(53,9,3),(54,8,5),(55,2,10),(56,2,5),(57,6,6),(58,5,7),(59,1,8),(60,10,7),(61,7,10),(62,9,6),(63,6,6),(64,1,10),(65,5,6),(66,6,7),(67,8,3),(68,5,1),(69,8,2),(70,3,10),(71,10,6),(72,4,10),(73,4,5),(74,2,2),(75,7,2),(76,8,3),(77,4,2),(78,5,8),(79,2,5),(80,1,7),(81,10,2),(82,5,9),(83,4,3),(84,2,3),(85,9,7),(86,5,5),(87,8,10),(88,9,4),(89,2,1),(90,9,5),(91,5,4),(92,8,6),(93,7,10),(94,6,4),(95,2,3),(96,7,7),(97,3,5),(98,8,5),(99,1,10),(100,2,5);
+
+--
+-- Insert Values into `deliveryratings` table
+--
+
 INSERT INTO `deliveryratings` (`rating_id`,`ontime`,`courteous`) VALUES (1,3,2),(2,6,4),(3,10,9),(4,1,10),(5,4,2),(6,5,10),(7,8,1),(8,10,3),(9,6,9),(10,9,5),(11,1,1),(12,5,4),(13,1,2),(14,6,2),(15,7,7),(16,9,10),(17,1,2),(18,3,5),(19,10,1),(20,9,2),(21,8,1),(22,10,1),(23,9,6),(24,9,10),(25,8,3),(26,1,1),(27,10,9),(28,10,5),(29,2,9),(30,5,10),(31,2,9),(32,4,4),(33,7,2),(34,3,2),(35,6,2),(36,3,7),(37,4,8),(38,1,7),(39,10,8),(40,8,5),(41,5,8),(42,8,1),(43,1,7),(44,8,2),(45,6,3),(46,5,4),(47,7,3),(48,2,8),(49,5,9),(50,9,3),(51,2,2),(52,4,10),(53,5,9),(54,1,8),(55,8,2),(56,9,2),(57,8,8),(58,4,9),(59,3,10),(60,9,10),(61,8,7),(62,3,2),(63,7,1),(64,5,2),(65,3,4),(66,4,7),(67,9,10),(68,8,3),(69,9,6),(70,2,8),(71,6,8),(72,10,4),(73,4,3),(74,6,7),(75,4,4),(76,6,1),(77,9,1),(78,1,8),(79,7,4),(80,9,1),(81,10,9),(82,5,10),(83,7,9),(84,7,9),(85,8,9),(86,5,4),(87,3,7),(88,2,2),(89,5,5),(90,10,5),(91,7,2),(92,10,5),(93,10,2),(94,10,7),(95,10,9),(96,8,10),(97,6,9),(98,5,7),(99,4,9),(100,2,5);
 
+--
+-- Create procedure Calculate_Overall_Rating_For_Driver
+--
 
 DROP procedure if exists Calculate_Overall_Rating_For_Driver;
 DELIMITER //
@@ -515,6 +543,9 @@ SET out_avg = (theavgcourteous + theavgontime) / 2;
 END//
 DELIMITER ;
 
+--
+-- Create procedure Calculate_Max_Rating_For_Driver
+--
 
 DROP procedure if exists Calculate_Max_Rating_For_Driver;
 DELIMITER //
@@ -545,8 +576,10 @@ SET max_cour = theavgcour;
 END//
 DELIMITER ;
 
---
 
+--
+-- Create procedure Calculate_Min_Rating_For_Driver
+--
 
 DROP procedure if exists Calculate_Min_Rating_For_Driver;
 DELIMITER //
@@ -577,6 +610,11 @@ SET min_cour = theavgcour;
 END//
 DELIMITER ;
 
+--
+-- Create procedure Calculate_Overall_Rating_For_restaurant
+--
+
+
 DROP procedure if exists Calculate_Overall_Rating_For_restaurant;
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Calculate_Overall_Rating_For_restaurant`(
@@ -604,12 +642,9 @@ SET out_avg = (theavgprice + theavgfood) / 2;
 END//
 DELIMITER ;
 
--- Call the procedure
-
--- CALL Calculate_Overall_Rating_For_restaurant (1, @avg_output);
-
--- View Output
--- SELECT @avg_output AS AVG_price_rating;
+--
+-- Call procedure Calculate_Overall_Rating_For_restaurant
+--
 
 DROP procedure if exists Calculate_Max_Rating_For_restaurant;
 DELIMITER //
@@ -640,6 +675,8 @@ SET max_food = theavgfood;
 END//
 DELIMITER ;
 
+--
+-- Create procedure Calculate_Min_Rating_For_restaurant
 --
 
 
