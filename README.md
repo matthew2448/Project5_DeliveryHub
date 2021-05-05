@@ -42,6 +42,15 @@ This project will take an existing database prototype provided by the “Maveric
 
 ![The EERD](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/UPDATEDTeam5EERD.png)
 
+## Indexs
+![Cost Of Restaurant Index](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/explain%20cost_restaurant_index.png)
+![Order From Restaurant Index](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/explain%20order_restaurant-1.png)
+![Restaurant Index](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/Screen%20Shot%202021-05-05%20at%205.51.38%20PM.png)
+
+![Create Index](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/Screen%20Shot%202021-05-05%20at%201.25.49%20PM.png)
+![Index Scan](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/Screen%20Shot%202021-05-04%20at%202.20.17%20PM.png)
+![Full Scan](https://github.com/matthew2448/Project5_DeliveryHub/blob/master/Images/Screen%20Shot%202021-05-04%20at%202.20.32%20PM.png)
+
 ## Data Dictionary
 
 | Table: delivery           |              |          |     |     |         |         |
